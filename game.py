@@ -1,4 +1,5 @@
 import numpy as np
+import sys
 
 
 #проверка введенного значения
@@ -32,10 +33,12 @@ def hod2():
 def win1():
     print(np.array(matrix))
     print(f"{player1} победил!")
+    again()
 
 def win2():
     print(np.array(matrix))
     print(f"{player2} победил!")
+    again()
 
 #проверка выигрыша
 def check():
@@ -58,6 +61,10 @@ def check():
     elif lst1[0]==lst2[1]==lst3[2]=='O': return True
     elif lst1[2]==lst2[1]==lst3[0]=='X': return True
     elif lst1[2]==lst2[1]==lst3[0]=='O': return True
+    #проверка на ничью
+    elif isinstance(lst1[0], str)==True and isinstance(lst1[1], str)==True and isinstance(lst1[2], str)==True and isinstance(lst2[0], str)==True and isinstance(lst2[1], str)==True and isinstance(lst2[2], str)==True and isinstance(lst3[0], str)==True and isinstance(lst3[1], str)==True and isinstance(lst3[2], str)==True:
+        print("Ничья")
+        again()
 
 #ход 1 игрока
 def pl1():
@@ -135,16 +142,25 @@ def pl2():
         else:
             pl1()
 
+def start():
+    print("Привет! Давайте сыграем в 'Крестики-нолики'. Первый игрок будет Х, а второй - О. Удачи =)")
+    player1=input('Введите имя первого игрока: ')
+    player2=input('Введите имя второго игрока: ')
+    print(f"{player1} играет за Х\n{player2} игает за О")
+    lst1=[7,8,9]
+    lst2=[4,5,6]
+    lst3=[1,2,3]
+    matrix=[lst1,lst2,lst3]
+    pl1()
 
-print("Привет! Давайте сыграем в 'Крестики-нолики'. Первый игрок будет Х, а второй - О. Удачи =)")
-player1=input('Введите имя первого игрока: ')
-player2=input('Введите имя второго игрока: ')
-print(f"{player1} играет за Х\n{player2} игает за О")
+def again():
+    print("Хочешь сыграть еще раз?")
+    ans=input("Введи [Y] - сыграть еще раз или [N] - закрыть игру")
+    if ans=='Y':
+        start()
+    elif ans=='N':
+        sys.exit()
+    else:
+        again()
 
-
-lst1=[7,8,9]
-lst2=[4,5,6]
-lst3=[1,2,3]
-matrix=[lst1,lst2,lst3]
-
-pl1()
+start()
