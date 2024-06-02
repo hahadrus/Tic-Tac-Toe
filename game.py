@@ -155,12 +155,27 @@ def start():
 
 def again():
     print("Хочешь сыграть еще раз?")
-    ans=input("Введи [Y] - сыграть еще раз или [N] - закрыть игру")
-    if ans=='Y':
+    ans=input("Введи [Y] - сыграть еще раз или [N] - закрыть игру: ")
+    if ans.lower=='y':
         start()
-    elif ans=='N':
+    elif ans.lower=='n':
         sys.exit()
     else:
         again()
 
-start()
+global player1
+global player2
+global lst1
+global lst2
+global lst3
+global matrix
+
+print("Привет! Давайте сыграем в 'Крестики-нолики'. Первый игрок будет Х, а второй - О. Удачи =)")
+player1=input('Введите имя первого игрока: ')
+player2=input('Введите имя второго игрока: ')
+print(f"{player1} играет за Х\n{player2} игает за О")
+lst1=[7,8,9]
+lst2=[4,5,6]
+lst3=[1,2,3]
+matrix=[lst1,lst2,lst3]
+pl1()
